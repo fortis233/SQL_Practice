@@ -1,1 +1,5 @@
-The first SQL question will be here.
+09/05/2021
+1, select the first name and last name of employees who are in IT department
+
+Answer:
+
