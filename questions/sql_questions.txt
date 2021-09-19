@@ -1,5 +1,6 @@
 09/05/2021
 1, select the first name and last name of employees who are in IT department
 
-Answer:
+Answer: 
+select e.first_name, e.last_name from company.employee e join company.department d where e.department_id = d.department_id and d.department_name = 'IT department';
 
