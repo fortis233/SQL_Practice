@@ -3,3 +3,9 @@
 
 Answer:
 
+
+09/19/2021
+2. select first name, last name, department name and salary of all the employees who has a salary that is NOT lower than 70000 in the IT department.
+
+Answer:
+
