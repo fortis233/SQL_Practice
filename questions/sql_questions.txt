@@ -1,5 +1,14 @@
 09/05/2021
 1, select the first name and last name of employees who are in IT department
 
+Answer: 
+
+select first_name,last_name,department_name from employee e join department d on e.department_id = d.department_id where department_name = "IT department";
+
+
+09/20/2021
+2. select first name, last name, department name and salary of all the employees who has a salary that is NOT lower than 70000 in the IT department.
+
 Answer:
 
+select first_name, last_name,department_name,salary from company.employee e join company.department d on e.department_id = d.department_id where department_name = "IT department" and salary >= 70000;
