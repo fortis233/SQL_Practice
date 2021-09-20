@@ -3,3 +3,5 @@
 
 Answer:
 
+
+select first_name, last_name, department_name from company.employee e join company.department d where e.department_id = d.department_id and department_name = "IT department";
