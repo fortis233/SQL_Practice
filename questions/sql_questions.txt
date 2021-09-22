@@ -3,3 +3,7 @@
 
 Answer:
 select first_name, last_name,department_name from company.employee e join company.department d where e.department_id = d.department_id and department_name = "IT department";
+
+2.select first name, last name, department name and salary of all the employees who has a salary that is NOT lower than 70000 in the IT department.
+
+select first_name,last_name,department_name,salary from employee e join department d where e.department_id = d.department_id and department_name="IT department" and salary>=70000;
