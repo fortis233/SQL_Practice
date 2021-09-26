@@ -3,7 +3,44 @@
 
 Answer: select first_name, last_name, department_name from companydata.employee e join companydata.department d where e.department_id = d.department_id and department_name = "IT department";
 
-
 2. select first name, last name, department name and salary of all the employees who has a salary that is NOT lower than 70000 in the IT department.
 
 select first_name, last_name, department_name, salary from companydata.employee e join companydata.department d where e.department_id = d.department_id and salary >= 70000 and department_name = "IT department";
+
+09/22/2021
+3. select first name, last name of all the managers. Your answer should not contain duplicates..
+hint: A manager is a person who manages at least one another person. His/Her position might or might not be manager. I know it sounds stupid but please think about it :)
+
+Answer: select distinct c.first_name, c.last_name from companydata.employee e join companydata.employee c on e.manager_id = c.id  ;
+
+4. select first name, last name, department name of all employees who work in Japan.
+
+Is it possible? if not, please answer why.
+
+Answer:select first_name, last_name, department_name from companydata.employee e join companydata.department d on e.department_id = d.department_id join companydata. department_location l on l.department_id = d.department_id join companydata.location c on c.location_id = l.location_id and  country_code = "JP";
+
+5. select the deparment name and id of all departments which are cross multiple locations.
+
+Answer:select department_name, d.department_id from companydata.department d join companydata.department_location dl on d.department_id = dl.department_id join companydata.location l on dl.location_id = l.location_id having count(d.department_id)>1;
+
+6. increase the salary of all managers by 1000. you may want to check the definition of "manager" in Question 3.
+
+Answer: update companydata.employee e join companydata.employee c on e.manager_id = c.id set c.salary = c.salary + 1000;
+
+7. decrease the salary of all regular employees (not managers) by 1000. you may want to check the definition of "manager" in Question 3.
+
+Answer:
+
+8. select all regular employees (not managers) whose first name is not less than 5 chars. you may want to check the definition of "manager" in Question 3.
+
+Answer:
+
+9.Fire(I mean delete) all the employees whose salary is below 60000.
+
+Answer:delete from companydata.employee e where e.salary < 60000;
+
+10. list the first name, last name and salary of all the employees who are not in Business department in decreasing order of salaries.
+
+Answer:select first_name, last_name, salary from companydata.employee e join companydata.department d on e.department_id = d.department_id and  NOT d.department_name = 'Business department'  ORDER BY e.salary ASC ;
+
+
