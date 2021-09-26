@@ -61,5 +61,5 @@ delete from employee where salary < 60000;
 10. list the first name, last name and salary of all the employees who are not in Business department in decreasing order of salaries.
 
 Answer:
-select first_name, last_name, salary from employee e join department d on e.department_id = d.department_id where department_name != "Business department" order by e.salary desc;
 
+select first_name, last_name, salary from employee e join department d on e.department_id = d.department_id where department_name != "Business department" order by e.salary desc;
