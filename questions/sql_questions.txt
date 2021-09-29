@@ -60,3 +60,10 @@ Answer:
 
 select first_name, last_name, salary from employee e join department d on e.department_id = d.department_id where department_name != "Business department" order by e.salary desc;
 
+
+09/26/2021
+11. select the first name and last name of the employee who has the third highest salary in IT department.
+
+Answer:
+select first_name,last_name  from  employee as e inner join department as d on (e.department_id = d.department_id)where department_name="IT department" order by salary DESC limit 2,1;
+
