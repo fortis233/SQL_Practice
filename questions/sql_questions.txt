@@ -44,3 +44,9 @@ Answer:delete from companydata.employee e where e.salary < 60000;
 Answer:select first_name, last_name, salary from companydata.employee e join companydata.department d on e.department_id = d.department_id and  NOT d.department_name = 'Business department'  ORDER BY e.salary ASC ;
 
 
+09/26/2021
+11. select the first name and last name of the employee who has the third highest salary in IT department.
+
+Answer: select first_name, last_name,salary from companydata.employee e join companydata.department d where e.department_id = d.department_id and department_name = "IT department" ORDER BY e.salary DESC LIMIT 2, 1;
+
+
