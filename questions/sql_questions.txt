@@ -1,16 +1,16 @@
 09/05/2021
 1, select the first name and last name of employees who are in IT department
 
-Answer:
-select first_name, last_name, department_name from company.employee e join company.department d where e.department_id = d.department_id and department_name = "IT department";
+Answer: 
 
-09/19/2021
+select first_name,last_name,department_name from employee e join department d on e.department_id = d.department_id where department_name = "IT department";
+
+09/20/2021
 2. select first name, last name, department name and salary of all the employees who has a salary that is NOT lower than 70000 in the IT department.
 
 Answer:
-select first_name, last_name,department_name,salary from company.employee e join company.department d where e.department_id = d.department_id and department_name = "IT department" and salary >= 70000;
 
-
+select first_name, last_name,department_name,salary from company.employee e join company.department d on e.department_id = d.department_id where department_name = "IT department" and salary >= 70000;
 
 09/22/2021
 3. select first name, last name of all the managers. Your answer should not contain duplicates..
@@ -25,12 +25,13 @@ SELECT distinct  m.first_name, m.last_name FROM  employee e JOIN  employee m whe
 Is it possible? if not, please answer why.
 
 Answer:
+
 SELECT first_name, last_name department_name from employee e join department d on e.department_id = d.department_id join department_location dl on d.department_id = dl.department_id join location l where dl.location_id = l.location_id and country_code = "JP";
 
-
-5. select the deparment name and id of all departments which are cross multiple locations.
+5. select the deparment name and id of all departments which are across multiple locations.
 
 Answer:
+
 select department_name, d.department_id from department d join department_location dl on d.department_id = dl.department_id join location l on dl.location_id = l.location_id 
 having count(*) > 1;
 
@@ -38,6 +39,7 @@ having count(*) > 1;
 6. increase the salary of all managers by 1000. you may want to check the definition of "manager" in Question 3.
 
 Answer:
+
 update employee e join employee m on e.manager_id = m.id set m.salary = m.salary + 1000;
 
 
@@ -46,13 +48,11 @@ update employee e join employee m on e.manager_id = m.id set m.salary = m.salary
 Answer:
 update employee e join employee m on e.manager_id = m.id set e.salary = e.salary - 1000 and m.salary = m.salary + 1000 ;
 
-
-
 8. select all regular employees (not managers) whose first name is not less than 5 chars. you may want to check the definition of "manager" in Question 3.
 
 Answer:
-select * FROM  employee e JOIN  employee m where e.manager_id = m.id and char_length(e.first_name) >= 5;
 
+select * FROM  employee e JOIN  employee m where e.manager_id = m.id and char_length(e.first_name) >= 5;
 
 9.Fire(I mean delete) all the employees whose salary is below 60000.
 
@@ -63,4 +63,13 @@ delete from employee e where e.salary < 60000;
 10. list the first name, last name and salary of all the employees who are not in Business department in decreasing order of salaries.
 
 Answer:
-select first_name, last_name, salary from employee e join department d where e.department_id = d.department_id and department_name != "Business department";
+
+select first_name, last_name, salary from employee e join department d on e.department_id = d.department_id where department_name != "Business department" order by e.salary desc;
+
+09/26/2021
+11. select the first name and last name of the employee who has the third highest salary in IT department.
+
+Answer:
+
+select first_name, last_name,salary from company.employee e join company.department d where e.department_id = d.department_id and department_name = "IT department" ORDER BY e.salary DESC LIMIT 2, 1;
+
