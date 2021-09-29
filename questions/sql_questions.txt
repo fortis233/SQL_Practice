@@ -1,6 +1,14 @@
 09/05/2021
 1, select the first name and last name of employees who are in IT department
 
+Answer: 
+
+select first_name,last_name,department_name from employee e join department d on e.department_id = d.department_id where department_name = "IT department";
+
+
+09/20/2021
+2. select first name, last name, department name and salary of all the employees who has a salary that is NOT lower than 70000 in the IT department.
+
 Answer:
 select first_name, last_name,department_name from company.employee e join company.department d where e.department_id = d.department_id and department_name = "IT department";
 
@@ -53,3 +61,60 @@ Answer:DELETE FROM company.employee WHERE salary <= 60000;
 
 Answer:
 
+select first_name, last_name,department_name,salary from company.employee e join company.department d on e.department_id = d.department_id where department_name = "IT department" and salary >= 70000;
+
+09/22/2021
+3. select first name, last name of all the managers. Your answer should not contain duplicates..
+hint: A manager is a person who manages at least one another person. His/Her position might or might not be manager. I know it sounds stupid but please think about it :)
+
+Answer:
+select first_name,last_name from employee where position like '%m%' or position = 'CEO';
+(or)
+select distinct e.first_name,e.last_name from employee e inner join employee i on e.id = i.manager_id; 
+
+4. select first name, last name, department name of all employees who work in Japan.
+
+Is it possible? if not, please answer why.
+
+Answer:
+select first_name,last_name,department_name from company.department d join company.employee e on e.department_id = d.department_id join company.department_location l on d.department_id = l.department_id join company.location c on c.location_id = l.location_id where country_code = "JP";
+
+5. select the deparment name and id of all departments which are across multiple locations.
+
+Answer:
+select d.department_name,d.department_id from company.department d join company.department_location l on l.department_id = d.department_id where d.department_id = 0;
+
+6. increase the salary of all managers by 1000. you may want to check the definition of "manager" in Question 3.
+
+Answer:
+update employee set employee.salary = salary + 1000 where position like '%m%' or position = 'CEO';
+(or)
+update employee e join employee m on e.manager_id = m.id set m.salary = m.salary + 1000;
+
+7. decrease the salary of all regular employees (not managers) by 1000. you may want to check the definition of "manager" in Question 3.
+
+Answer:
+update employee set employee.salary = salary - 1000 where position = "Developer" or position = "Business Analyst";
+
+8. select all regular employees (not managers) whose first name is not less than 5 chars. you may want to check the definition of "manager" in Question 3.
+
+Answer:
+select * from employee e where length(first_name) >= 5 and position = "Developer" or position = "Business Analyst";
+(or)
+select * from  employee e join employee i where e.manager_id = i.id and char_length(e.first_name) >= 5;
+
+9.Fire(I mean delete) all the employees whose salary is below 60000.
+
+Answer:
+delete from employee where salary < 60000;
+
+10. list the first name, last name and salary of all the employees who are not in Business department in decreasing order of salaries.
+
+Answer:
+
+select first_name, last_name, salary from employee e join department d on e.department_id = d.department_id where department_name != "Business department" order by e.salary desc;
+
+09/26/2021
+11. select the first name and last name of the employee who has the third highest salary in IT department.
+
+Answer:
