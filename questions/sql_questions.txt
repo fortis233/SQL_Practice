@@ -49,4 +49,9 @@ Answer:DELETE FROM company.employee WHERE salary <= 60000;
 
 10. list the first name, last name and salary of all the employees who are not in Business department in decreasing order of salaries.
 
-Answer:
+Answer: select first_name, last_name, salary from company.employee e join company.department d on e.department_id = d.department_id and  NOT d.department_name = 'Business department'  ORDER BY e.salary DESC ;
+09/26/2021
+11. select the first name and last name of the employee who has the third highest salary in IT department.
+
+Answer: select first_name, last_name, salary from company.employee e join company.department d on e.department_id = d.department_id and department_name = "IT department" order by e.salary desc limit 2,1;
+
