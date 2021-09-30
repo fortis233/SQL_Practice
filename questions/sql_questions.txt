@@ -41,7 +41,7 @@ Answer:delete from companydata.employee e where e.salary < 60000;
 
 10. list the first name, last name and salary of all the employees who are not in Business department in decreasing order of salaries.
 
-Answer:select first_name, last_name, salary from companydata.employee e join companydata.department d on e.department_id = d.department_id and  NOT d.department_name = 'Business department'  ORDER BY e.salary ASC ;
+Answer:select first_name, last_name, salary from companydata.employee e join companydata.department d on e.department_id = d.department_id and  NOT d.department_name = 'Business department'  ORDER BY e.salary DESC ;
 
 
 09/26/2021
